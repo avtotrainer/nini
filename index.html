@@ -1,1 +1,362 @@
+<!doctype html>
+<html lang="ka">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ნინი ინანიშვილი — პორტფოლიო</title>
+  <meta name="description" content="ნინი ინანიშვილი — Linux, Bash, Git/GitHub, GitHub Pages, WSLg. ერთგვერდიანი პორტფოლიო, პრაქტიკული პროექტებითა და მიღწევებით." />
+  <meta name="theme-color" content="#e11d48" />
+  <meta property="og:title" content="ნინი ინანიშვილი — პორტფოლიო" />
+  <meta property="og:description" content="Linux · Bash · Git/GitHub · GitHub Pages · WSLg · პროექტები და მიღწევები" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://avtotrainer.github.io/nini" />
+
+  <style>
+    :root{
+      /* Elegant Raspberry / Indigo */
+      --bg:#0b0f1a; --bg2:#10182a; --ink:#e5e7eb; --muted:#9aa6bb;
+      --card:#0e1526; --border:#212c4a;
+      --brand:#e11d48; --brand2:#a855f7; --ring:#fb7185;
+      --r:18px; --shadow:0 18px 42px rgba(2,6,23,.45); --maxw:1120px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#fff5f7; --bg2:#f8f5ff; --ink:#0f172a; --muted:#475569;
+        --card:#ffffff; --border:#e9d8fd; --brand:#e11d48; --brand2:#7c3aed; --ring:#fb7185;
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--ink);
+      background:
+        radial-gradient(1200px 700px at -12% -20%, #2a173955, transparent 55%),
+        radial-gradient(900px 600px at 120% 0%, #2a0c2150, transparent 55%),
+        linear-gradient(160deg, var(--bg), var(--bg2));
+      font:16px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", Arial;
+    }
+    a{color:#f472b6; text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+    .muted{color:var(--muted)}
+
+    /* Header */
+    header{position:sticky; top:0; z-index:10; backdrop-filter:blur(8px); background:color-mix(in srgb, var(--bg) 92%, transparent); border-bottom:1px solid var(--border)}
+    nav{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0}
+    .logo{font-weight:900; letter-spacing:.3px}
+    .nav{display:flex; gap:14px; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; gap:8px; cursor:pointer;
+      background:linear-gradient(135deg, var(--brand), var(--brand2));
+      color:#fff; border:0; padding:10px 14px; border-radius:12px; font-weight:800; box-shadow:var(--shadow)
+    }
+    .btn.ghost{background:transparent; color:var(--ink); border:1px solid var(--border); box-shadow:none}
+    .chip{
+      display:inline-flex; align-items:center; gap:6px; padding:6px 10px;
+      border-radius:999px; background:color-mix(in srgb, var(--brand) 16%, transparent);
+      color:color-mix(in srgb, var(--brand) 70%, #fff 30%); font-weight:800; border:1px solid color-mix(in srgb, var(--brand) 35%, transparent)
+    }
+
+    /* Hero */
+    .hero{padding:56px 0 28px}
+    .hero-wrap{display:grid; grid-template-columns: .95fr 1.05fr; gap:26px; align-items:center}
+    @media (max-width:900px){ .hero-wrap{grid-template-columns:1fr} }
+    .avatar{
+      border-radius:22px; overflow:hidden; border:2px solid color-mix(in srgb, var(--brand) 65%, var(--brand2));
+      box-shadow:var(--shadow); background:radial-gradient(100% 100% at 50% 0%, #2c1430, #130b18);
+      display:grid; place-items:center; aspect-ratio:3/4
+    }
+    .avatar svg{width:92%; height:92%}
+    .card{
+      background:linear-gradient(180deg, color-mix(in srgb, var(--card) 92%, #0000), color-mix(in srgb, var(--card) 85%, #0000));
+      border:1px solid var(--border); border-radius:var(--r); padding:22px; box-shadow:var(--shadow)
+    }
+    h1{margin:0 0 8px; font:900 clamp(28px,4.6vw,48px)/1.1 ui-serif, Georgia, serif}
+    .lead{color:var(--muted); font-size:18px; margin:6px 0 12px}
+
+    /* Sections */
+    section{padding:28px 0}
+    section h2{margin:0 0 10px; font:900 clamp(22px,3.3vw,30px)/1.2 ui-serif, Georgia, serif}
+    .grid{display:grid; gap:14px}
+    .cols-3{grid-template-columns:repeat(3,1fr)}
+    .cols-2{grid-template-columns:repeat(2,1fr)}
+    @media (max-width:900px){ .cols-3,.cols-2{grid-template-columns:1fr} }
+    .card.sm{padding:16px}
+
+    /* Badges / progress */
+    .badge{display:inline-block; padding:4px 10px; border-radius:999px; background:color-mix(in srgb, var(--brand2) 16%, transparent); color:#f5e1ff; font-size:12px; border:1px solid color-mix(in srgb, var(--brand2) 35%, transparent)}
+    .bar{height:10px; background:color-mix(in srgb, var(--brand2) 8%, transparent); border:1px solid color-mix(in srgb, var(--brand2) 30%, transparent); border-radius:999px; overflow:hidden}
+    .bar > i{display:block; height:100%; background:linear-gradient(90deg, var(--brand), var(--brand2)); width:0}
+
+    /* Timeline */
+    .tl{border-left:2px dashed color-mix(in srgb, var(--brand2) 45%, #000); padding-left:12px}
+    .tli{margin:0 0 12px}
+    .tli b{color:color-mix(in srgb, var(--brand2) 70%, var(--ink))}
+
+    /* Code box */
+    pre{margin:10px 0; padding:12px; border-radius:12px; background:color-mix(in srgb, var(--brand2) 10%, #0b1020); border:1px solid color-mix(in srgb, var(--brand2) 30%, transparent); overflow:auto}
+
+    /* Footer */
+    footer{padding:30px 0 44px; color:var(--muted); border-top:1px solid var(--border); background:color-mix(in srgb, var(--bg) 92%, transparent)}
+    .foot{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:center}
+    .sep{height:1px; background:var(--border); margin:12px 0 18px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav aria-label="მთავარი ნავიგაცია">
+        <div class="logo">✨ ნინი ინანიშვილი <span class="muted">· პორტფოლიო</span></div>
+        <div class="nav">
+          <a href="#results">მიღწევები</a>
+          <a href="#projects">პროექტები</a>
+          <a href="#skills">უნარები</a>
+          <a href="#timeline">ქრონო</a>
+          <a href="#share">გაზიარება</a>
+          <a class="btn ghost" href="mailto:nini742@din.ge">✉️ წერილი</a>
+          <a class="btn" href="https://avtotrainer.github.io/nini" target="_blank" rel="noopener">🌐 Live</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-wrap">
+          <!-- გოგონას პლეისჰოლდერი — ტალღოვანი თმით -->
+          <figure class="avatar" aria-label="გოგონას სილუეტი">
+            <svg viewBox="0 0 128 128" role="img" aria-label="გოგონას სილუეტი">
+              <defs>
+                <linearGradient id="g" x1="0" x2="1">
+                  <stop offset="0" stop-color="#e11d48"/>
+                  <stop offset="1" stop-color="#a855f7"/>
+                </linearGradient>
+              </defs>
+              <rect x="6" y="6" width="116" height="116" rx="18" fill="url(#g)" opacity=".16"/>
+              <!-- თმები (ტალღოვანი) -->
+              <path d="M28 62c0-20 16-36 36-36s36 16 36 36c0 10-5 14-8 22-2 4-54 4-56 0-3-8-8-12-8-22z" fill="#f472b6"/>
+              <!-- სახე -->
+              <circle cx="64" cy="54" r="18" fill="#ffd9e3"/>
+              <!-- მხრები/ტანი -->
+              <path d="M12 114c10-26 32-38 52-38s42 12 52 38" fill="#a78bfa"/>
+            </svg>
+          </figure>
+
+          <div class="card">
+            <span class="chip">Linux · Bash · Git/GitHub · GitHub Pages · WSLg</span>
+            <h1>გამარჯობა! მე ვარ ნინი ინანიშვილი</h1>
+            <p class="lead">
+              საზაფხულო სკოლაში <b>დავაყენე</b> და <b>განვაახლე</b> Manjaro Linux, შევეჩვიე ტერმინალს,
+              Git/GitHub-ით ვმართავ ვერსიებს და GitHub Pages-ზე <b>გამოვაქვეყნე</b> ჩემი გვერდები.
+              Windows-ში <b>WSLg ავამუშავე</b>, რომ Linux-ის GUI აპები გამეშვა — ნაბიჯ-ნაბიჯ, სიზუსტით.
+            </p>
+            <div style="display:flex; gap:10px; flex-wrap:wrap">
+              <a class="btn ghost" href="mailto:nini742@din.ge">ელ-ფოსტა</a>
+              <a class="btn ghost" href="https://github.com/avtotrainer/nini" target="_blank" rel="noopener">🐙 GitHub</a>
+              <a class="btn" href="https://avtotrainer.github.io/nini" target="_blank" rel="noopener">🔗 ჩემი საიტი</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section id="results">
+      <div class="container">
+        <h2>მიღწევები (Highlights)</h2>
+        <div class="grid cols-3">
+          <article class="card sm">
+            <h3 style="margin:0 0 6px">🧭 სისტემური დისციპლინა</h3>
+            <p class="muted">ინსტალაცია/განახლება წესრიგით, პაკეტების მართვა და კონფიგის არქივაცია.</p>
+          </article>
+          <article class="card sm">
+            <h3 style="margin:0 0 6px">🧩 Bash & Git</h3>
+            <p class="muted">სკრიპტები commit/push-ისთვის, ფაილების ჰაშებით კონტროლი (SHA-256).</p>
+          </article>
+          <article class="card sm">
+            <h3 style="margin:0 0 6px">🌐 GitHub Pages</h3>
+            <p class="muted">სტატიკური გვერდების დიზაინი და <b>გამოქვეყნება</b> — სწრაფი, სუფთა, ხელმისაწვდომი.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="container">
+        <h2>პროექტები</h2>
+        <div class="grid cols-3">
+          <article class="card">
+            <h3 style="margin:0 0 6px">📄 პირადი პორტფოლიო</h3>
+            <span class="badge">HTML/CSS</span> <span class="badge">GitHub Pages</span>
+            <p class="muted">ერთგვერდიანი, ელეგანტური პორტფოლიო, რომლითაც ყველაფერს მოკლედ ვაჩვენებ.</p>
+            <div style="display:flex; gap:8px; flex-wrap:wrap">
+              <a class="btn ghost" href="https://avtotrainer.github.io/nini" target="_blank" rel="noopener">Live</a>
+              <a class="btn ghost" href="https://github.com/avtotrainer/nini" target="_blank" rel="noopener">Source</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 style="margin:0 0 6px">🔐 კრიპტო-დემო CLI</h3>
+            <span class="badge">Bash</span> <span class="badge">SHA-256</span>
+            <p class="muted">ფაილის ჰაშის მიღება და შედარება კონტროლთან.</p>
+<pre><code># hash.sh
+sha256sum &quot;$1&quot; | awk '{print $1}'</code></pre>
+          </article>
+
+          <article class="card">
+            <h3 style="margin:0 0 6px">🤖 ავტო-კომიტი</h3>
+            <span class="badge">Bash</span> <span class="badge">Git</span>
+            <p class="muted">ტაიმსტამპიანი commit + push ერთ სვლაში.</p>
+<pre><code># auto.sh
+git add -A
+git commit -m &quot;update: $(date +%F-%T)&quot;
+git push</code></pre>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="container">
+        <h2>უნარები</h2>
+        <div class="grid cols-2">
+          <div class="card">
+            <h3 style="margin:0 0 6px">ტექნოლოგიები</h3>
+            <p class="muted">Linux (Manjaro/Ubuntu) · Bash · Git/GitHub · GitHub Pages · WSL/WSLg</p>
+            <div>
+              <div class="muted" style="margin:6px 0 4px">Bash</div>
+              <div class="bar"><i style="width:86%"></i></div>
+              <div class="muted" style="margin:10px 0 4px">Git/GitHub</div>
+              <div class="bar"><i style="width:84%"></i></div>
+              <div class="muted" style="margin:10px 0 4px">Linux Basics</div>
+              <div class="bar"><i style="width:88%"></i></div>
+            </div>
+          </div>
+          <div class="card">
+            <h3 style="margin:0 0 6px">რბილი უნარები</h3>
+            <p class="muted">მოთმინება, სიზუსტე, თანმიმდევრულობა, გუნდური კომუნიკაცია (Chat/Meet), პრეზენტაცია (Slides).</p>
+            <ul class="muted" style="margin:8px 0 0 16px">
+              <li>ინსტრუქციების მკაფიო მიყოლა და აღრიცხვა.</li>
+              <li>პრობლემის ეტაპობრივი დაშლა და გადაჭრა.</li>
+              <li>ვერსიების კონტროლის კულტურა pull-request-ებით.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section id="timeline">
+      <div class="container">
+        <h2>დროითი ხაზი</h2>
+        <div class="card">
+          <div class="tl">
+            <div class="tli"><b>დღე 1:</b> Manjaro Linux — ინსტალაცია/განახლება, GNOME.</div>
+            <div class="tli"><b>დღე 2:</b> ტერმინალის საბაზო ბრძანებები, ფაილური სტრუქტურა.</div>
+            <div class="tli"><b>დღე 3:</b> Git/GitHub, SSH გასაღებები, commit/push.</div>
+            <div class="tli"><b>დღე 4:</b> GitHub Pages — საიტის აგება და <b>გამოქვეყნება</b>.</div>
+            <div class="tli"><b>დღე 5:</b> WSL/WSLg — კონფიგურაცია და GUI აპები.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHARING / TEACHING -->
+    <section id="share">
+      <div class="container">
+        <h2>გაზიარება & სწავლება</h2>
+        <div class="grid cols-2">
+          <article class="card">
+            <h3 style="margin:0 0 6px">ჩემი სწრაფი გზამკვლევი — GitHub Pages</h3>
+<pre><code>git init
+git add -A
+git commit -m &quot;first commit&quot;
+git branch -M main
+git remote add origin https://github.com/avtotrainer/nini.git
+git push -u origin main
+</code></pre>
+            <p class="muted">Settings → Pages → Source: <b>Main</b>, Folder: <b>/ (root)</b>.</p>
+          </article>
+          <article class="card">
+            <h3 style="margin:0 0 6px">WSLg ცდა</h3>
+            <p class="muted">Win-ის ტერმინალში:</p>
+<pre><code>wsl --install -d Ubuntu
+wsl --set-default-version 2
+</code></pre>
+            <p class="muted">შემდეგ Ubuntu-ში გაუშვი <code>gedit</code> ან <code>nautilus</code> — GUI უნდა გაეშვას.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <h2>კონტაქტი</h2>
+        <div class="grid cols-2">
+          <div class="card">
+            <p class="muted">მომწერე, გადამხედე რეპოზიტორს ან ეწვიე ცოცხალ გვერდს.</p>
+            <p>✉️ <a href="mailto:nini742@din.ge">nini742@din.ge</a></p>
+            <p>🐙 <a href="https://github.com/avtotrainer/nini" target="_blank" rel="noopener">github.com/avtotrainer/nini</a></p>
+            <p>🔗 <a href="https://avtotrainer.github.io/nini" target="_blank" rel="noopener">avtotrainer.github.io/nini</a></p>
+          </div>
+          <div class="card" style="display:grid; grid-template-columns:120px 1fr; gap:12px; align-items:center">
+            <img
+              alt="QR — avtotrainer.github.io/nini"
+              width="120" height="120"
+              src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&ecc=H&data=https%3A%2F%2Favtotrainer.github.io%2Fnini">
+            <p class="muted">სკანირებით გადადი Live გვერდზე. (თუ QR არ ჩნდება, ინტერნეტი შეამოწმე.)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="sep"></div>
+      <div class="foot">
+        <span>© <span id="y"></span> ნინი ინანიშვილი</span>
+        <span class="muted">განახლდა: <span id="lm"></span></span>
+        <span class="muted">საიტი: <a href="https://avtotrainer.github.io/nini" target="_blank" rel="noopener">nini</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // წელი + ბოლო მოდიფიკაციის თარიღი
+    document.getElementById('y').textContent = new Date().getFullYear();
+    document.getElementById('lm').textContent = new Date(document.lastModified).toLocaleDateString('ka-GE');
+
+    // მცირე „progress“ ანიმაციის გაშვება როცა სქროლით უნარებამდე ჩამოვა:
+    const bars = [...document.querySelectorAll('.bar > i')];
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          bars.forEach((b,i)=>{ b.style.width = b.getAttribute('style').match(/width:\\s*([^;]+)/)[1]; });
+          obs.disconnect();
+        }
+      });
+    }, {threshold:.3});
+    const skills = document.querySelector('#skills');
+    if(skills) obs.observe(skills);
+  </script>
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"ნინი ინანიშვილი",
+    "email":"mailto:nini742@din.ge",
+    "url":"https://avtotrainer.github.io/nini",
+    "sameAs":["https://github.com/avtotrainer/nini"]
+  }
+  </script>
+</body>
+</html>
 
